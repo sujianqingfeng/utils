@@ -1,6 +1,6 @@
 {
   "name": "@sujian/utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "my frontend utils",
   "author": "hens",
   "license": "MIT",
@@ -29,6 +29,8 @@
   "scripts": {
     "build": "tsup",
     "test": "vitest",
+    "test:run": "vitest run",
+    "coverage": "vitest run --coverage",
     "release": "npm publish --no-git-checks --access public"
   },
   "dependencies": {
