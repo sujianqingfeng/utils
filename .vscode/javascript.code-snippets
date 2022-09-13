@@ -1,0 +1,15 @@
+{
+  "vitest init": {
+    "prefix": "vitest",
+    "body": [
+      "import { describe, it, expect } from 'vitest'",
+      "",
+      "describe('$1', () => {",
+      "  it('$2', () => {",
+      "    expect(1).toBeTruthy()",
+      "  })",
+      "})"
+    ],
+    "description": "vitest init"
+  }
+}

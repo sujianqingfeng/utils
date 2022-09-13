@@ -1,3 +1,5 @@
-export function test() {
-  return 'f'
-}
+export * from './basic'
+export * from './array'
+export * from './option'
+export * from './number-operation'
+export * from './method'

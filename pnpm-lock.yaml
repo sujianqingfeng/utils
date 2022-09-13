@@ -1,16 +1,22 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@sujian/eslint-config-typescript': ^0.0.11
+  '@sujian/eslint-config-typescript': ^0.0.12
   '@swc/core': ^1.2.246
+  '@types/big.js': ^6.1.5
+  big.js: ^6.2.1
   eslint: ^8.23.0
   tsup: ^6.2.3
   typescript: ^4.8.2
   vitest: ^0.22.1
 
+dependencies:
+  big.js: 6.2.1
+
 devDependencies:
-  '@sujian/eslint-config-typescript': 0.0.11_eslint@8.23.0+typescript@4.8.2
+  '@sujian/eslint-config-typescript': 0.0.12_eslint@8.23.0+typescript@4.8.2
   '@swc/core': 1.2.246
+  '@types/big.js': 6.1.5
   eslint: 8.23.0
   tsup: 6.2.3_a7a7e85729584cdbf21a666493c5df26
   typescript: 4.8.2
@@ -98,8 +104,8 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@sujian/eslint-config-basic/0.0.11_eslint@8.23.0:
-    resolution: {integrity: sha512-wbWhQsuRFRKMbCHikgRQlSKlk/ro1Rtg7jK/Jh2fYVX29Okwn9feKS3dDwutZeS20eoacqxysiX848ib/HEpAA==}
+  /@sujian/eslint-config-basic/0.0.12_eslint@8.23.0:
+    resolution: {integrity: sha512-ZRNcbR8UBKWNTK6ra6NkO+CiweQDr02HGSkVBvqB46hMW1rq+7a/DGM4NgO6draSaQ7WzorxeUHBy629qUNTLg==}
     dependencies:
       eslint-plugin-html: 7.1.0
       eslint-plugin-jsonc: 2.4.0_eslint@8.23.0
@@ -108,12 +114,12 @@ packages:
       - eslint
     dev: true
 
-  /@sujian/eslint-config-typescript/0.0.11_eslint@8.23.0+typescript@4.8.2:
-    resolution: {integrity: sha512-TLVIcpmLPLqV0SscZ+2J7mU88sOwBf20+V9QI+gd8HjgjnC7CcV8mTzAShNfmtTP/A7KoDAeyLvLXZGjhKpiLg==}
+  /@sujian/eslint-config-typescript/0.0.12_eslint@8.23.0+typescript@4.8.2:
+    resolution: {integrity: sha512-w3w2rq5s04P2L3EiQoQSqmKWtuj3dqFFIf8w0yvOK2H6Y9QfLHsChfjnCDezbBSZ9u3e5XLZJhOIuBIhefTl4w==}
     peerDependencies:
       typescript: '>=3.9'
     dependencies:
-      '@sujian/eslint-config-basic': 0.0.11_eslint@8.23.0
+      '@sujian/eslint-config-basic': 0.0.12_eslint@8.23.0
       '@typescript-eslint/eslint-plugin': 5.36.1_586c56b3bc76dec8ef0f241fb0cda488
       '@typescript-eslint/parser': 5.36.1_eslint@8.23.0+typescript@4.8.2
       typescript: 4.8.2
@@ -283,6 +289,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@types/big.js/6.1.5:
+    resolution: {integrity: sha512-UiWyJ6TLWoHeHZ8VUyngzCOwJDVxTsPnqfAMR/85X93rkRk5A4T2U42BCx0wCmZdtMHGHN/utJ8ft5xWu0V1bA==}
+    dev: true
 
   /@types/chai-subset/1.3.3:
     resolution: {integrity: sha512-frBecisrNGz+F4T6bcc+NLeolfiojh5FxW2klu669+8BARtyQv2C/GkNW6FUodVe4BroGMP/wER/YDGc7rEllw==}
@@ -492,6 +502,10 @@ packages:
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
+
+  /big.js/6.2.1:
+    resolution: {integrity: sha512-bCtHMwL9LeDIozFn+oNhhFoq+yQ3BNdnsLSASUxLciOb1vgvpHsIO1dsENiGMgbb4SkP5TrzWzRiLddn8ahVOQ==}
+    dev: false
 
   /binary-extensions/2.2.0:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
