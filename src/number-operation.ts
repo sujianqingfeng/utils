@@ -1,4 +1,5 @@
-import big, { Big } from 'big.js'
+import big, { BigSource, Big } from 'big.js'
+import { isObject, isUndefined } from './basic'
 
 /**
  * 加
@@ -7,7 +8,7 @@ import big, { Big } from 'big.js'
  * @param {*} two
  * @returns
  */
-export function plus(one:Big, two:Big) {
+export function plus(one:BigSource, two:BigSource) {
   return big(one).plus(two).toNumber()
 }
 
@@ -18,7 +19,7 @@ export function plus(one:Big, two:Big) {
  * @param {*} two
  * @returns
  */
-export function minus(one:Big, two:Big) {
+export function minus(one:BigSource, two:BigSource) {
   return big(one).minus(two).toNumber()
 }
 
@@ -30,7 +31,7 @@ export function minus(one:Big, two:Big) {
  * @param {*} round
  * @returns
  */
-export function times(one:Big, two:Big, round = 2) {
+export function times(one:BigSource, two:BigSource, round = 2) {
   return big(one).times(two).round(round).toNumber()
 }
 
@@ -42,6 +43,34 @@ export function times(one:Big, two:Big, round = 2) {
  * @param {*} round
  * @returns
  */
-export function div(one:Big, two:Big, round = 2) {
+export function div(one:BigSource, two:BigSource, round = 2) {
   return big(one).div(two).round(round).toNumber()
+}
+
+type SumOption = {
+  map?:(item: Record<string, any>) => BigSource
+  round?:number
+}
+/**
+ * 求和
+ * 
+ * @param arr 
+ * @param options 
+ * @returns 
+ */
+export function sum(arr:unknown[], options:SumOption = {}) {
+  const { map, round = 2 } = options
+
+  const total =  arr.reduce((pre, cur) => {
+    if (isObject(cur)) {
+      if (!isUndefined(map)) {
+        cur = map(cur)
+      } else {
+        throw new Error('sum method need map option')
+      }
+    }
+    return big(pre as BigSource).plus(cur as BigSource) 
+  }, 0) as Big
+
+  return total.round(round).toNumber()
 }
