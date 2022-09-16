@@ -1,11 +1,11 @@
 {
   "name": "@sujian/utils",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "my frontend utils",
   "author": "hens",
   "license": "MIT",
   "homepage": "https://github.com/sujianqingfeng/utils",
-  "keywords": [],
+  "keywords": ["frontend utils"],
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
@@ -17,15 +17,9 @@
   "main": "lib/index.js",
   "module": "lib/index.mjs",
   "types": "lib/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./lib/*"
-      ]
-    }
-  },
   "files": [
-    "lib"
+    "lib",
+    "*.d.ts"
   ],
   "scripts": {
     "build": "tsup",
