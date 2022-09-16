@@ -1,6 +1,6 @@
 {
   "name": "@sujian/utils",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "my frontend utils",
   "author": "hens",
   "license": "MIT",
@@ -8,6 +8,7 @@
   "keywords": [],
   "exports": {
     ".": {
+      "types": "./lib/index.d.ts",
       "require": "./lib/index.js",
       "import": "./lib/index.mjs"
     },

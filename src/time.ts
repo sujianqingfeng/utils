@@ -56,8 +56,8 @@ export function getCurrentRangeTime(type:ManipulateType,  options:Exclude<RangeO
  * @param options 
  * @returns 
  */
-export function getCurrentWeekRangeTime( options:Exclude<RangeOptions, 'value'> = {}) {
-  return getCurrentRangeTime('week', options)
+export function getCurrentWeekRangeTime( options:Exclude<RangeOptions, 'value'> = {}) { 
+  return getCurrentRangeTime('week', options) 
 }
 
 /**
