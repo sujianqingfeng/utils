@@ -1,6 +1,6 @@
 {
   "name": "@sujian/utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "my frontend utils",
   "author": "hens",
   "license": "MIT",
@@ -34,7 +34,8 @@
     "release": "npm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "big.js": "^6.2.1"
+    "big.js": "^6.2.1",
+    "dayjs": "^1.11.5"
   },
   "devDependencies": {
     "@sujian/eslint-config-typescript": "^0.0.12",

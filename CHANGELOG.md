@@ -2,6 +2,12 @@
 - number-operation
   - sum
 
+- time
+  - getMonthRangeTime, 
+  - getWeekRangeTime 
+  - getCurrentWeekRangeTime
+  - getCurrentMonthRangeTime
+
 
 # v1.0.1
 

@@ -5,6 +5,7 @@ specifiers:
   '@swc/core': ^1.2.246
   '@types/big.js': ^6.1.5
   big.js: ^6.2.1
+  dayjs: ^1.11.5
   eslint: ^8.23.0
   tsup: ^6.2.3
   typescript: ^4.8.2
@@ -12,6 +13,7 @@ specifiers:
 
 dependencies:
   big.js: 6.2.1
+  dayjs: 1.11.5
 
 devDependencies:
   '@sujian/eslint-config-typescript': 0.0.12_eslint@8.23.0+typescript@4.8.2
@@ -614,6 +616,10 @@ packages:
       shebang-command: 2.0.0
       which: 2.0.2
     dev: true
+
+  /dayjs/1.11.5:
+    resolution: {integrity: sha512-CAdX5Q3YW3Gclyo5Vpqkgpj8fSdLQcRuzfX6mC6Phy0nfJ0eGYOeS7m4mt2plDWLAtA4TqTakvbboHvUxfe4iA==}
+    dev: false
 
   /debug/4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
