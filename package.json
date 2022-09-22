@@ -31,7 +31,6 @@
     "release": "npm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "big.js": "^6.2.1",
     "currency.js": "^2.0.4",
     "dayjs": "^1.11.5"
   },
