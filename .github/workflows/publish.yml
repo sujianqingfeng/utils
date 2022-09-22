@@ -11,9 +11,10 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm install 
-      - run: npm run test:run 
-      - run: npm run build
-      - run: npm run release
+      - run: npm install -g pnpm 
+      - run: pnpm install 
+      - run: pnpm test:run 
+      - run: pnpm build
+      - run: pnpm release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -13,5 +13,9 @@
     "jsonc",
     "json5"
   ],
-  "cSpell.words": ["sujian"]
+  "cSpell.words": [
+    "pnpm",
+    "sujian",
+    "tsup"
+  ]
 }
