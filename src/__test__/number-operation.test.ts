@@ -7,7 +7,7 @@ describe('number-operation', () => {
     expect(plus(0.1, 0.2)).toEqual(0.3)
   })
 
-  it('plus', () => {
+  it('minus', () => {
     expect(minus(1, 0.9)).toEqual(0.1)
   })
 

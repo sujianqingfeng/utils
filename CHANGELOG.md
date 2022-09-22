@@ -1,3 +1,7 @@
+# v1.0.3
+ - option
+   - getLabel
+
 # v1.0.2
 - number-operation
   - sum

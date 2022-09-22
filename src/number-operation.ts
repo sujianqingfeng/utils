@@ -1,4 +1,4 @@
-import big, { BigSource, Big } from 'big.js'
+import currency, { Any, Options } from 'currency.js'
 import { isObject, isUndefined } from './basic'
 
 /**
@@ -8,8 +8,8 @@ import { isObject, isUndefined } from './basic'
  * @param {*} two
  * @returns
  */
-export function plus(one:BigSource, two:BigSource) {
-  return big(one).plus(two).toNumber()
+export function plus(one:Any, two:Any, options?: Options) {
+  return currency(one, options).add(two).value
 }
 
 /**
@@ -19,8 +19,8 @@ export function plus(one:BigSource, two:BigSource) {
  * @param {*} two
  * @returns
  */
-export function minus(one:BigSource, two:BigSource) {
-  return big(one).minus(two).toNumber()
+export function minus(one:Any, two:Any, options?: Options) {
+  return currency(one, options).subtract(two).value
 }
 
 /**
@@ -31,8 +31,8 @@ export function minus(one:BigSource, two:BigSource) {
  * @param {*} round
  * @returns
  */
-export function times(one:BigSource, two:BigSource, round = 2) {
-  return big(one).times(two).round(round).toNumber()
+export function times(one:Any, two:Any, options?: Options) {
+  return currency(one, options).multiply(two).value
 }
 
 /**
@@ -43,12 +43,12 @@ export function times(one:BigSource, two:BigSource, round = 2) {
  * @param {*} round
  * @returns
  */
-export function div(one:BigSource, two:BigSource, round = 2) {
-  return big(one).div(two).round(round).toNumber()
+export function div(one:Any, two:Any, options?: Options) {
+  return currency(one, options).divide(two).value
 }
 
 type SumOption = {
-  map?:(item: Record<string, any>) => BigSource
+  map?:(item: Record<string, any>) => Any 
   round?:number
 }
 /**
@@ -61,6 +61,8 @@ type SumOption = {
 export function sum(arr:unknown[], options:SumOption = {}) {
   const { map, round = 2 } = options
 
+  const wrapper = (value:Any) => currency(value, { precision: round })
+
   const total =  arr.reduce((pre, cur) => {
     if (isObject(cur)) {
       if (!isUndefined(map)) {
@@ -69,8 +71,8 @@ export function sum(arr:unknown[], options:SumOption = {}) {
         throw new Error('sum method need map option')
       }
     }
-    return big(pre as BigSource).plus(cur as BigSource) 
-  }, 0) as Big
+    return wrapper (pre as Any).add(cur as Any) 
+  }, 0) as currency 
 
-  return total.round(round).toNumber()
+  return total.value 
 }

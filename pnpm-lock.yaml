@@ -5,6 +5,7 @@ specifiers:
   '@swc/core': ^1.2.246
   '@types/big.js': ^6.1.5
   big.js: ^6.2.1
+  currency.js: ^2.0.4
   dayjs: ^1.11.5
   eslint: ^8.23.0
   tsup: ^6.2.3
@@ -13,6 +14,7 @@ specifiers:
 
 dependencies:
   big.js: 6.2.1
+  currency.js: 2.0.4
   dayjs: 1.11.5
 
 devDependencies:
@@ -616,6 +618,11 @@ packages:
       shebang-command: 2.0.0
       which: 2.0.2
     dev: true
+
+  /currency.js/2.0.4:
+    resolution: {integrity: sha512-6/OplJYgJ0RUlli74d93HJ/OsKVBi8lB1+Z6eJYS1YZzBuIp4qKKHpJ7ad+GvTlWmLR/hLJOWTykN5Nm8NJ7+w==}
+    engines: {node: '>=4'}
+    dev: false
 
   /dayjs/1.11.5:
     resolution: {integrity: sha512-CAdX5Q3YW3Gclyo5Vpqkgpj8fSdLQcRuzfX6mC6Phy0nfJ0eGYOeS7m4mt2plDWLAtA4TqTakvbboHvUxfe4iA==}

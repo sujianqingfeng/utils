@@ -5,7 +5,9 @@
   "author": "hens",
   "license": "MIT",
   "homepage": "https://github.com/sujianqingfeng/utils",
-  "keywords": ["frontend utils"],
+  "keywords": [
+    "frontend utils"
+  ],
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
@@ -30,6 +32,7 @@
   },
   "dependencies": {
     "big.js": "^6.2.1",
+    "currency.js": "^2.0.4",
     "dayjs": "^1.11.5"
   },
   "devDependencies": {
