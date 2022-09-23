@@ -44,6 +44,16 @@ export function getMonthRangeTime(options:RangeOptions = {}) {
   return getRangeTime('month', options)
 }
 
+/**
+ * 过去一年区间
+ * 
+ * @param options 
+ * @returns 
+ */
+export function getYearRangeTime(options:RangeOptions = {}) {
+  return getRangeTime('year', options)
+}
+
 export function getCurrentRangeTime(type:ManipulateType,  options:Exclude<RangeOptions, 'value'> = {}) {
   const {  format = DEFAULT_FORMAT } = options
   const times = [formatDayjs(dayjs().startOf(type), format), formatDayjs(dayjs().endOf('day'), format)]
@@ -68,6 +78,16 @@ export function getCurrentWeekRangeTime( options:Exclude<RangeOptions, 'value'> 
  */
 export function getCurrentMonthRangeTime(options:Exclude<RangeOptions, 'value'> = {}) {
   return getCurrentRangeTime('month', options)
+}
+
+/**
+ * 本年区间
+ * 
+ * @param options 
+ * @returns 
+ */
+export function getCurrentYearRangeTime(options:Exclude<RangeOptions, 'value'> = {}) {
+  return getCurrentRangeTime('year', options)
 }
 
 export {

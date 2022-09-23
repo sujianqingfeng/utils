@@ -1,3 +1,9 @@
+# v1.0.6
+- time
+  - getYearRangeTime
+  - getCurrentYearRangeTime
+
+
 # v1.0.5
 - format
   - formatMoney
