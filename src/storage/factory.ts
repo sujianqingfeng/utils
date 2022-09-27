@@ -1,38 +1,7 @@
-import { cookieStorage } from './storages/cookie'
-import { memoryStorage } from './storages/memory'
+import { storages, StorageType } from './storages'
+import type { Options, Context, ExitFn, BeforeFn, ContextConfig } from './types'
 
-export enum StorageType {
-  LOCAL,
-  SESSION,
-  MEMORY,
-  COOKIE
-}
-
-type Interceptor = {
-  reads: BeforeFn[],
-  writes: ExitFn[]
-}
-
-type Options = {
-  storageType: StorageType,
-  interceptor: Interceptor
-}
-
-type Context = {
-  key: string
-}
-
-type ExitFn = (value: any) => any
-type BeforeFn = (context: Context) => void | ExitFn
-
-const storages = {
-  [StorageType.LOCAL]: () => localStorage,
-  [StorageType.SESSION]: () => sessionStorage,
-  [StorageType.MEMORY]: () => memoryStorage,
-  [StorageType.COOKIE]: () => cookieStorage,
-}
-
-export function createStorage(options: Options) {
+export function createStorage(options: Partial<Options>) {
 
   const defaultOptions: Partial<Options> = {
     storageType: StorageType.LOCAL
@@ -42,13 +11,15 @@ export function createStorage(options: Options) {
 
   function getStorage(options?: Partial<Options>) {
     const finalConfig = { ...mergeOptions, ...options }
+
+    // TODO finalConfig merge is whether it is reasonable ？
     return { storage: storages[finalConfig.storageType](), finalConfig  }
-    
   }
 
-  function createContext(key: string): Context  {
+  function createContext(key: string, config: ContextConfig): Context  {
     return {
-      key
+      key,
+      config
     }
   }
 
@@ -74,9 +45,9 @@ export function createStorage(options: Options) {
     return value
   }
 
-  function getItem(key: string, options?: Partial<Options>) {
-    const { storage, finalConfig } = getStorage(options)
-    const context = createContext(key)
+  function getItem(key: string, opts?: Partial<Options>) {
+    const { storage, finalConfig } = getStorage(opts)
+    const context = createContext(key, finalConfig)
 
     const exitFns = beforeKey(context, finalConfig.interceptor.reads)
 
@@ -86,9 +57,9 @@ export function createStorage(options: Options) {
     return value
   }
 
-  function setItem(key: string, value: any, options?: Partial<Options>) {
-    const { storage, finalConfig } = getStorage(options)
-    const context = createContext(key)
+  function setItem(key: string, value: any, opts?: Partial<Options>) {
+    const { storage, finalConfig } = getStorage(opts)
+    const context = createContext(key, finalConfig)
 
     const exitFns = beforeKey(context, finalConfig.interceptor.writes)
     value = afterValue(exitFns, value)
@@ -96,18 +67,24 @@ export function createStorage(options: Options) {
     return storage.setItem(context.key, value)
   }
 
-  function removeItem(key: string, options?: Partial<Options>) {
-    const { storage, finalConfig } = getStorage(options)
-    const context = createContext(key)
+  function removeItem(key: string, opts?: Partial<Options>) {
+    const { storage, finalConfig } = getStorage(opts)
+    const context = createContext(key, finalConfig)
 
     beforeKey(context, finalConfig.interceptor.reads)
     
     storage.removeItem(context.key)
   }
 
+  function clear(opts?: Partial<Options>) {
+    const { storage } = getStorage(opts)
+    storage.clear()
+  }
+
   return {
     getItem,
     setItem,
-    removeItem
+    removeItem,
+    clear
   }
 }

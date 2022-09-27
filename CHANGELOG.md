@@ -1,3 +1,10 @@
+# v1.0.7
+- basic
+  - hasOwn
+- storage
+- cookie
+
+
 # v1.0.6
 - time
   - getYearRangeTime
