@@ -1,25 +1,55 @@
-import { Storage } from '../types'
+import { getCookie, setCookie } from '../../cookie'
+import type { Storage } from '../types'
 
-const COOKIE_KEY = '__cookie_key__'
+const COOKIE_KEY =  '__cookie_key__'
 
-const getCookie = (str: string, key: string, cookieKey: string = COOKIE_KEY) => {
-  const current = str.split(';').find(v => v.startsWith(`${cookieKey}=`))
-  if (current) {
-    const [, val] = current.split('=')
-    const possible =  decodeURIComponent(val.trim())
-    try {
-      return JSON.parse(possible)[key]
-    } catch (error) {
-      return possible 
-    }
+const parseJson = (str: string) => {
+  try {
+    const json = JSON.parse(str)
+    return { json }
+  } catch (error) {
+    return { error }
   }
-  return undefined
 }
 
-const  getItem = (key: string) => {
-  return getCookie(document.cookie, key)
+const getCurrentWrapperJson = () => {
+  const str = getCookie(COOKIE_KEY) || '{}'
+  return parseJson(str)
+} 
+
+const updateStorage = (value: any) => {
+  setCookie(COOKIE_KEY, value)
+}
+
+const getItem = (key: string) => {
+  const { json, error } = getCurrentWrapperJson()
+  if (error) {
+    return undefined
+  }
+  return json[key]
+}
+
+const setItem = (key: string, value: any) => {
+  const { json = {} } = getCurrentWrapperJson() 
+  json[key] = value 
+
+  updateStorage(json)
+}
+
+const removeItem = (key: string) => {
+  const { json = {} } = getCurrentWrapperJson() 
+  delete json[key] 
+
+  updateStorage(json)
+}
+
+const clear = () => {
+  updateStorage({})
 }
 
 export const cookieStorage: Storage = {
-  getItem
+  getItem,
+  setItem,
+  removeItem,
+  clear
 }

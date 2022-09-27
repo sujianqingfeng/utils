@@ -4,5 +4,7 @@
     "space-before-blocks": "off",
     "@typescript-eslint/space-before-blocks": "error",
     "@typescript-eslint/type-annotation-spacing": "error"
+    // "keyword-spacing": "off",
+    // "@typescript-eslint/keyword-spacing": "warn"
   }
 }
