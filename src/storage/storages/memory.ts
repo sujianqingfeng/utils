@@ -1,14 +1,15 @@
-import { isUndefined } from '../../basic'
 import type { Storage } from '../types'
 
 const MEMORY_KEY = '__memory_key__'
 
-const getCurrentStorage  = () => {
-  let storage =  window[MEMORY_KEY]
-
-  if (isUndefined(storage)) {
-    storage = window[MEMORY_KEY] = {} 
+declare global {
+  interface Window {
+    [MEMORY_KEY]: Record<string, any>;
   }
+}
+
+const getCurrentStorage  = () => {
+  const storage =  window[MEMORY_KEY] || (window[MEMORY_KEY] = {})
   return storage
 }
 

@@ -1,6 +1,5 @@
 export const getCookie = (key: string) => {
-  const cookie = document.cookie
-  const current = cookie .split(';').find(v => v.startsWith(`${key}=`))
+  const current = document.cookie.split('; ').find(v => v.startsWith(`${key}=`))
   if (current) {
     const [, val] = current.split('=')
     const possible =  decodeURIComponent(val.trim())
@@ -14,5 +13,5 @@ export const setCookie = (key: string, value: any) => {
 }
 
 export const delCookie = (key: string) => {
-  document.cookie = `${key}=; expires=Thu, 01 Jan 1970 00:00:00 GMT`
+  document.cookie = `${key}=del; expires=Thu, 01 Jan 1970 00:00:01 GMT`
 }
