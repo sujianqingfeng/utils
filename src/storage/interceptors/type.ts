@@ -1,18 +1,25 @@
 import { getTypeClassName, hasOwn } from '../../basic'
-import type { Context, BeforeFn } from '../types'
+import type { Context, BeforeFn, Options } from '../types'
 
-export const REMOVE_TYPE = '_remove_type'
+export type TypeConfig = {
+  removeType?: boolean
+} & Partial<Exclude<Options, 'interceptor'>>
 
 export const createType = () => {
   const TYPE = '__type__'
 
-  const createWrite: BeforeFn = (context: Context) => {
+  const isType = (context: Context) => {
     const { config } = context
+    const { removeType } = config as TypeConfig
     const isType =
-      config[REMOVE_TYPE] === undefined ? true : !config[REMOVE_TYPE]
+      removeType === undefined ? true : !removeType
+    return isType
+  } 
+
+  const createWrite: BeforeFn = (context: Context) => {
 
     return (value) => {
-      if (!isType) {
+      if (!isType(context)) {
         return value
       }
       
@@ -23,12 +30,9 @@ export const createType = () => {
   }
 
   const createRead: BeforeFn = (context: Context) => {
-    const { config } = context
-    const isType =
-      config[REMOVE_TYPE] === undefined ? true : !config[REMOVE_TYPE]
 
     return (value) => {
-      if (!isType) {
+      if (!isType(context)) {
         return value
       }
       try {
