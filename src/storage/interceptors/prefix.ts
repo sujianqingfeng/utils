@@ -1,12 +1,16 @@
-import type { Context } from '../types'
+import type { Context, Options } from '../types'
 
-export const REMOVE_PREFIX = '_remove_prefix'
+export type PrefixConfig = {
+  removePrefix?: boolean
+} & Partial<Exclude<Options, 'interceptor'>>
 
 export const createPrefix = (prefix: string) => {
   const create = (context: Context) => {
     const { config, key } = context
+    const { removePrefix } = config as PrefixConfig
     const isPrefix =
-      config[REMOVE_PREFIX] === undefined ? true : !config[REMOVE_PREFIX]
+      removePrefix === undefined ? true : !removePrefix
+      
     context.key = isPrefix ? `${prefix}${key}` : key
   }
 

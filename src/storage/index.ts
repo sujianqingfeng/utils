@@ -1,16 +1,8 @@
-import { createStorage } from './factory'
-import { createPrefix } from './interceptors/prefix'
-import { createType } from './interceptors/type'
+export { createStorage } from './core'
 
-const { prefixRead, prefixWrite } = createPrefix('_prefix_')
-const { typeWrite, typeRead } = createType()
+export { createPrefix } from './interceptors/prefix'
+export { createType } from './interceptors/type'
 
-// 注意放置的顺序
-export const storage = createStorage(
-  {
-    interceptor: {
-      reads: [prefixRead, typeRead],
-      writes: [prefixWrite, typeWrite],
-    }
-  }
-)
+export type { PrefixConfig } from './interceptors/prefix' 
+export type { TypeConfig } from './interceptors/type' 
+export { StorageType } from './storages'

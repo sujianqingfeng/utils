@@ -18,7 +18,7 @@ const getCurrentWrapperJson = () => {
 } 
 
 const updateStorage = (value: any) => {
-  setCookie(COOKIE_KEY, value)
+  setCookie(COOKIE_KEY, JSON.stringify(value))
 }
 
 const getItem = (key: string) => {

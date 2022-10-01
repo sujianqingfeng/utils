@@ -26,3 +26,5 @@ export type Context = {
   key: string
   config: ContextConfig 
 }
+
+export type MergeConfig = Partial<Exclude<Options, 'interceptor'>> & ContextConfig 
