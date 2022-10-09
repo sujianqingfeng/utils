@@ -1,6 +1,7 @@
 {
   "name": "@sujian/utils",
-  "version": "1.0.10",
+  "type": "module",
+  "version": "1.0.11",
   "description": "my frontend utils",
   "author": "hens",
   "license": "MIT",
@@ -11,17 +12,24 @@
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
-      "require": "./lib/index.js",
-      "import": "./lib/index.mjs"
+      "require": "./lib/index.cjs",
+      "import": "./lib/index.js"
     },
     "./*": "./*"
   },
-  "main": "lib/index.js",
-  "module": "lib/index.mjs",
-  "types": "lib/index.d.ts",
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./lib/*",
+        "./lib/index.d.ts"
+      ]
+    }
+  },
   "files": [
-    "lib",
-    "*.d.ts"
+    "lib"
   ],
   "scripts": {
     "build": "tsup",
@@ -36,7 +44,6 @@
   },
   "devDependencies": {
     "@sujian/eslint-config-typescript": "^0.0.17",
-    "@swc/core": "^1.2.246",
     "eslint": "^8.23.0",
     "happy-dom": "^6.0.4",
     "tsup": "^6.2.3",
