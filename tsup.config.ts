@@ -10,5 +10,6 @@ export default defineConfig({
   format: ['cjs', 'esm'],
   target: 'es5',
   // sourcemap: true,
-  minify: true
+  // minify is iffy
+  // minify: true
 })
