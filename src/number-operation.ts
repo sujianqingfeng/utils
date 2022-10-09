@@ -8,7 +8,7 @@ import { isObject, isUndefined } from './basic'
  * @param {*} two
  * @returns
  */
-export function plus(one:Any, two:Any, options?: Options) {
+export function plus(one: Any, two: Any, options?: Options) {
   return currency(one, options).add(two).value
 }
 
@@ -19,7 +19,7 @@ export function plus(one:Any, two:Any, options?: Options) {
  * @param {*} two
  * @returns
  */
-export function minus(one:Any, two:Any, options?: Options) {
+export function minus(one: Any, two: Any, options?: Options) {
   return currency(one, options).subtract(two).value
 }
 
@@ -31,7 +31,7 @@ export function minus(one:Any, two:Any, options?: Options) {
  * @param {*} round
  * @returns
  */
-export function times(one:Any, two:Any, options?: Options) {
+export function times(one: Any, two: Any, options?: Options) {
   return currency(one, options).multiply(two).value
 }
 
@@ -43,13 +43,13 @@ export function times(one:Any, two:Any, options?: Options) {
  * @param {*} round
  * @returns
  */
-export function div(one:Any, two:Any, options?: Options) {
+export function div(one: Any, two: Any, options?: Options) {
   return currency(one, options).divide(two).value
 }
 
 type SumOption = {
-  map?:(item: Record<string, any>) => Any 
-  round?:number
+  map?: (item: Record<string, any>) => Any 
+  round?: number
 }
 /**
  * 求和
@@ -58,10 +58,10 @@ type SumOption = {
  * @param options 
  * @returns 
  */
-export function sum(arr:unknown[], options:SumOption = {}) {
+export function sum(arr: unknown[], options: SumOption = {}) {
   const { map, round = 2 } = options
 
-  const wrapper = (value:Any) => currency(value, { precision: round })
+  const wrapper = (value: Any) => currency(value, { precision: round })
 
   const total =  arr.reduce((pre, cur) => {
     if (isObject(cur)) {

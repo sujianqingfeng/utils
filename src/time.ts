@@ -1,10 +1,11 @@
 import dayjs, { Dayjs, ManipulateType } from 'dayjs'
+dayjs.Ls.en.weekStart = 1
 
 const DEFAULT_FORMAT = 'YYYY-MM-DD'
 
 type RangeOptions = {
-  value?:number,
-  format?:string
+  value?: number,
+  format?: string
 }
 
 /**
@@ -14,11 +15,11 @@ type RangeOptions = {
  * @param format 
  * @returns 
  */
-export function formatDayjs(source:Dayjs, format:string = DEFAULT_FORMAT) {
+export function formatDayjs(source: Dayjs, format: string = DEFAULT_FORMAT) {
   return source.format(format)
 }
 
-export function getRangeTime(type:ManipulateType, options:RangeOptions = {}) {
+export function getRangeTime(type: ManipulateType, options: RangeOptions = {}) {
   const { value = 1, format = DEFAULT_FORMAT } = options
   const times = [formatDayjs(dayjs().subtract(value, type).startOf('day'), format), formatDayjs(dayjs().endOf('day'), format)]
   return times
@@ -30,7 +31,7 @@ export function getRangeTime(type:ManipulateType, options:RangeOptions = {}) {
  * @param options 
  * @returns 
  */
-export function getWeekRangeTime(options:RangeOptions = {}) {
+export function getWeekRangeTime(options: RangeOptions = {}) {
   return getRangeTime('week', options)
 }
 
@@ -40,7 +41,7 @@ export function getWeekRangeTime(options:RangeOptions = {}) {
  * @param options 
  * @returns 
  */
-export function getMonthRangeTime(options:RangeOptions = {}) {
+export function getMonthRangeTime(options: RangeOptions = {}) {
   return getRangeTime('month', options)
 }
 
@@ -50,11 +51,11 @@ export function getMonthRangeTime(options:RangeOptions = {}) {
  * @param options 
  * @returns 
  */
-export function getYearRangeTime(options:RangeOptions = {}) {
+export function getYearRangeTime(options: RangeOptions = {}) {
   return getRangeTime('year', options)
 }
 
-export function getCurrentRangeTime(type:ManipulateType,  options:Exclude<RangeOptions, 'value'> = {}) {
+export function getCurrentRangeTime(type: ManipulateType,  options: Exclude<RangeOptions, 'value'> = {}) {
   const {  format = DEFAULT_FORMAT } = options
   const times = [formatDayjs(dayjs().startOf(type), format), formatDayjs(dayjs().endOf('day'), format)]
   return times
@@ -66,7 +67,7 @@ export function getCurrentRangeTime(type:ManipulateType,  options:Exclude<RangeO
  * @param options 
  * @returns 
  */
-export function getCurrentWeekRangeTime( options:Exclude<RangeOptions, 'value'> = {}) { 
+export function getCurrentWeekRangeTime( options: Exclude<RangeOptions, 'value'> = {}) { 
   return getCurrentRangeTime('week', options) 
 }
 
@@ -76,7 +77,7 @@ export function getCurrentWeekRangeTime( options:Exclude<RangeOptions, 'value'> 
  * @param options 
  * @returns 
  */
-export function getCurrentMonthRangeTime(options:Exclude<RangeOptions, 'value'> = {}) {
+export function getCurrentMonthRangeTime(options: Exclude<RangeOptions, 'value'> = {}) {
   return getCurrentRangeTime('month', options)
 }
 
@@ -86,7 +87,7 @@ export function getCurrentMonthRangeTime(options:Exclude<RangeOptions, 'value'> 
  * @param options 
  * @returns 
  */
-export function getCurrentYearRangeTime(options:Exclude<RangeOptions, 'value'> = {}) {
+export function getCurrentYearRangeTime(options: Exclude<RangeOptions, 'value'> = {}) {
   return getCurrentRangeTime('year', options)
 }
 

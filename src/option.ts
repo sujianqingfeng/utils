@@ -3,8 +3,8 @@ import { isArray, isObject } from './basic'
 type Value =  string | number | boolean | null
 
 interface Option {
-  label:string,
-  value?:Value
+  label: string,
+  value?: Value
 }
 
 /**
@@ -14,7 +14,7 @@ interface Option {
  * @param value 
  * @returns 
  */
-export function createOption(label:string, value?:Value):Option {
+export function createOption(label: string, value?: Value): Option {
   return { label, value } 
 }
 
@@ -25,8 +25,8 @@ export function createOption(label:string, value?:Value):Option {
  * @param valueKey 
  * @returns 
  */
-export function mapOption(labelKey:string, valueKey?:string) {
-  return (item:Record<string, any>) => createOption(item[labelKey], valueKey ? item[valueKey] : null)
+export function mapOption(labelKey: string, valueKey?: string) {
+  return (item: Record<string, any>) => createOption(item[labelKey], valueKey ? item[valueKey] : null)
 }
 
 /**
@@ -37,7 +37,7 @@ export function mapOption(labelKey:string, valueKey?:string) {
  * @param value 
  * @returns 
  */
-export function insertOption(options:Option[], label = '全部', value:Value = '') {
+export function insertOption(options: Option[], label = '全部', value: Value = '') {
   options.unshift(createOption(label, value))
   return options
 }
@@ -50,7 +50,7 @@ export function insertOption(options:Option[], label = '全部', value:Value = '
  * @param defaultLabel 
  * @returns 
  */
-export function getLabel(options:Option[] | Record<string, string>, value: string | number, defaultLabel = '') {
+export function getLabel(options: Option[] | Record<string, string>, value: string | number, defaultLabel = '') {
   if (isArray(options)) {
     const current = options.find(item => item.value === value)
     if (current) {
