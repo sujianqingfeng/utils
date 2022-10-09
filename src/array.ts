@@ -4,7 +4,7 @@
  * @param arr 
  * @returns boolean 
  */
-export function getLastIndex(arr:unknown[]):number {
+export function getLastIndex(arr: unknown[]): number {
   return isEmpty(arr) ? 0 :  arr.length - 1
 }
 
@@ -14,7 +14,7 @@ export function getLastIndex(arr:unknown[]):number {
  * @param arr 
  * @returns 
  */
-export function isEmpty(arr:unknown[]): boolean {
+export function isEmpty(arr: unknown[]): boolean {
   return arr.length === 0
 }
 

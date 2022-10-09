@@ -21,6 +21,7 @@ describe('time', () => {
 
   it('getCurrentWeekRangeTime', () => {
     const ans = [`${dayjs().startOf('week').format(DEFAULT_FORMAT)  }`, `${dayjs().format(DEFAULT_FORMAT)  }`]
+    
     expect(getCurrentWeekRangeTime()).toEqual(ans)
   })
 

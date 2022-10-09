@@ -7,7 +7,7 @@ import currency, { Any, Options } from 'currency.js'
  * @param options 
  * @returns 
  */
-export function formatMoney(val:Any, options:Options = { symbol: '', precision: 0 }) {
+export function formatMoney(val: Any, options: Options = { symbol: '', precision: 0 }) {
   return currency(val, options).format()
 }
 
@@ -19,6 +19,6 @@ export function formatMoney(val:Any, options:Options = { symbol: '', precision: 
  * @param negativeText 
  * @returns 
  */
-export function formatBoolean(val:boolean | undefined | null, positiveText = '是', negativeText = '否') {
+export function formatBoolean(val: boolean | undefined | null, positiveText = '是', negativeText = '否') {
   return val ? positiveText : negativeText
 }
