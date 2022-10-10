@@ -1,3 +1,15 @@
+# v1.0.11
+## time
+
+- getCurrentWeekRangeTime -> getCurrentWeekToNowRangeTime 
+- getCurrentMonthRangeTime -> getCurrentMonthToNowRangeTime 
+- getCurrentYearRangeTime -> getCurrentYearToNowRangeTime 
+- add getCurrentWeekRangeTime 
+- add getCurrentMonthRangeTime 
+- add getCurrentYearRangeTime 
+
+
+
 # v1.0.8
 - set week start to monday
 

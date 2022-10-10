@@ -55,40 +55,60 @@ export function getYearRangeTime(options: RangeOptions = {}) {
   return getRangeTime('year', options)
 }
 
-export function getCurrentRangeTime(type: ManipulateType,  options: Exclude<RangeOptions, 'value'> = {}) {
+export function getCurrentRangeToNowTime(type: ManipulateType,  options: Exclude<RangeOptions, 'value'> = {}) {
   const {  format = DEFAULT_FORMAT } = options
   const times = [formatDayjs(dayjs().startOf(type), format), formatDayjs(dayjs().endOf('day'), format)]
   return times
 }
 
 /**
- * 本周区间
+ * 本周到现在区间
  * 
  * @param options 
  * @returns 
  */
+export function getCurrentWeekToNowRangeTime( options: Exclude<RangeOptions, 'value'> = {}) { 
+  return getCurrentRangeToNowTime('week', options) 
+}
+
+/**
+ * 本月到现在区间
+ * 
+ * @param options 
+ * @returns 
+ */
+export function getCurrentMonthToNowRangeTime(options: Exclude<RangeOptions, 'value'> = {}) {
+  return getCurrentRangeToNowTime('month', options)
+}
+
+/**
+ * 本年到现在区间
+ * 
+ * @param options 
+ * @returns 
+ */
+export function getCurrentYearToNowRangeTime(options: Exclude<RangeOptions, 'value'> = {}) {
+  return getCurrentRangeToNowTime('year', options)
+}
+
+export function getCurrentRangeTime(type: ManipulateType,  options: Exclude<RangeOptions, 'value'> = {}) {
+  const {  format = DEFAULT_FORMAT } = options
+  const start = dayjs().startOf(type)
+  const end = start.add(1, type).subtract(1, 'day').endOf('day')
+  const times = [formatDayjs(start, format), formatDayjs(end, format)]
+  return times
+}
+
 export function getCurrentWeekRangeTime( options: Exclude<RangeOptions, 'value'> = {}) { 
   return getCurrentRangeTime('week', options) 
 }
 
-/**
- * 本月区间
- * 
- * @param options 
- * @returns 
- */
-export function getCurrentMonthRangeTime(options: Exclude<RangeOptions, 'value'> = {}) {
-  return getCurrentRangeTime('month', options)
+export function getCurrentMonthRangeTime( options: Exclude<RangeOptions, 'value'> = {}) { 
+  return getCurrentRangeTime('month', options) 
 }
 
-/**
- * 本年区间
- * 
- * @param options 
- * @returns 
- */
-export function getCurrentYearRangeTime(options: Exclude<RangeOptions, 'value'> = {}) {
-  return getCurrentRangeTime('year', options)
+export function getCurrentYearRangeTime( options: Exclude<RangeOptions, 'value'> = {}) { 
+  return getCurrentRangeTime('year', options) 
 }
 
 export {
