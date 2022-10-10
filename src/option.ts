@@ -2,7 +2,7 @@ import { isArray, isObject } from './basic'
 
 type Value =  string | number | boolean | null
 
-interface Option {
+export interface Option {
   label: string,
   value?: Value
 }
