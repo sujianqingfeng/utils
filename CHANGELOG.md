@@ -1,3 +1,7 @@
+# v1.0.13
+## object
+  - add objectTrim
+
 # v1.0.11
 ## time
 
