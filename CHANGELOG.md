@@ -1,3 +1,8 @@
+# v1.0.14
+
+## object
+  - add objectDefaultValue
+
 # v1.0.13
 ## object
   - add objectTrim
