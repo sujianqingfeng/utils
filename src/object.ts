@@ -1,4 +1,4 @@
-import { isNull, isString } from './basic'
+import { isArray, isNull, isObject, isString, isUndefined } from './basic'
 
 type Obj = Record<string, any>
 
@@ -25,6 +25,35 @@ export function objectDefaultValue(obj:Obj, part:Partial<Obj>, valid: (val:any)=
       data[key] = part[key]
     }
   })
+
+  return data
+}
+
+export function objectIsInvalid(obj:unknown) {
+  return isNull(obj) || isUndefined(obj) || obj === '' || (isArray(obj) && !obj.length) 
+}
+
+export function objectRemoveEmptyProp(obj:any) {
+  if (!isObject(obj) && !isArray(obj)) {
+    return obj
+  }
+
+  const data:any = isObject(obj) ? {} : []
+
+  if (isObject(obj)) {
+    Object.keys(obj).forEach(key => {
+      const value = (obj as Obj)[key]
+      if (!objectIsInvalid(value)) {
+        data[key] = objectRemoveEmptyProp(value)
+      }
+    })
+  }
+
+  if (isArray(obj)) {
+    obj.forEach((o, i) => {
+      data[i] = objectRemoveEmptyProp(o)
+    })
+  }
 
   return data
 }
