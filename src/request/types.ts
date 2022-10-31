@@ -9,3 +9,7 @@ type Interceptor<T = any> = [OnFulfilled<T>, OnRejected<T>?]
 
 export type RequestInterceptor=Interceptor<AxiosRequestConfig> 
 export type ResponseInterceptor=Interceptor<AxiosResponse> 
+
+export type RedirectInterceptorOptions = {
+  isRedirect:(res:AxiosResponse)=>string
+}
