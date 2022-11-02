@@ -1,7 +1,7 @@
 import type {  ResponseInterceptor, ExtractDataInterceptorOptions } from '../../types'
 
-export function createRedirectInterceptor(options:ExtractDataInterceptorOptions ):ResponseInterceptor {
-  const { extract } = options
+export function createExtractDataInterceptor(options?:ExtractDataInterceptorOptions = {}):ResponseInterceptor {
+  const { extract } = options 
 
   return [
     (res) => {

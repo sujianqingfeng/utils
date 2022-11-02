@@ -25,11 +25,11 @@ export function createAxios(axiosConfig: CreateAxiosDefaults, interceptor?:Creat
     getAxiosInstance() {
       return axiosInstance
     },
-    get<T>(url:string, params?:any, config?:AxiosRequestConfig) {
-      return axiosInstance.get<T>(url, {
+    get<T = any>(url:string, params?:any, config?:AxiosRequestConfig) {
+      return axiosInstance.get(url, {
         params,
         ...config
-      })
+      }) as T
     },
     post(url:string, data?:any, config?:AxiosRequestConfig) {
       return axiosInstance.post(url, data, config)
