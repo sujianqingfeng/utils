@@ -7,5 +7,6 @@ export default defineConfig({
   clean: true,
   dts: true,
   format: ['cjs', 'esm'],
-  shims: true
+  external: ['axios'],
+  // shims: true
 })

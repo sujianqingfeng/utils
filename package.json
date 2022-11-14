@@ -1,7 +1,7 @@
 {
   "name": "@sujian/utils",
   "type": "module",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "my frontend utils",
   "author": "hens",
   "license": "MIT",
@@ -47,7 +47,7 @@
     "@sujian/eslint-config-typescript": "^0.0.17",
     "eslint": "^8.23.0",
     "happy-dom": "^6.0.4",
-    "tsup": "^6.2.3",
+    "tsup": "^6.4.0",
     "typescript": "^4.8.2",
     "vitest": "^0.23.4"
   }
