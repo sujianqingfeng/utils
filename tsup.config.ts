@@ -7,6 +7,6 @@ export default defineConfig({
   clean: true,
   dts: true,
   format: ['cjs', 'esm'],
-  external: ['axios'],
+  external: ['axios', 'dayjs', 'currency.js', 'has', 'function-bind', 'qs', 'side-channel', 'get-intrinsic', 'call-bind/callBound', 'object-inspect', 'has-symbols',],
   // shims: true
 })
