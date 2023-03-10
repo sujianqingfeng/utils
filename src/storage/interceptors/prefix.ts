@@ -4,6 +4,12 @@ export type PrefixConfig = {
   removePrefix?: boolean
 } & Partial<Exclude<Options, 'interceptor'>>
 
+/**
+ * 前缀
+ * 
+ * @param prefix 
+ * @returns 
+ */
 export const createPrefix = (prefix: string) => {
   const create = (context: Context) => {
     const { config, key } = context

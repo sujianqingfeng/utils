@@ -16,8 +16,8 @@ export const createType = () => {
     return isType
   } 
 
+  // 写入
   const createWrite: BeforeFn = (context: Context) => {
-
     return (value) => {
       if (!isType(context)) {
         return value
@@ -29,8 +29,8 @@ export const createType = () => {
     }
   }
 
+  // 读取
   const createRead: BeforeFn = (context: Context) => {
-
     return (value) => {
       if (!isType(context)) {
         return value

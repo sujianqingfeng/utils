@@ -3,18 +3,21 @@ import type { Options, Context, ExitFn, BeforeFn, MergeConfig } from './types'
 
 export function createStorage(options: Partial<Options>) {
 
+  // 默认配置
   const defaultOptions: Partial<Options> = {
     storageType: StorageType.LOCAL
   }
 
   const mergeOptions = { ...defaultOptions, ...options }
 
+  // 拿到store
   function getStorage(options?: Partial<Options>) {
     const finalConfig = { ...mergeOptions, ...options }
     const { storageType = StorageType.LOCAL } = finalConfig
     return storages[storageType]()
   }
 
+  // 创建上下文
   function createContext(key: string, config: MergeConfig = {}): Context  {
     return {
       key,
@@ -22,6 +25,7 @@ export function createStorage(options: Partial<Options>) {
     }
   }
 
+  // 执行前置钩子
   function beforeKey(context: Context, fns: BeforeFn[] = []) {
     const exitFns: ExitFn[] = []
 
@@ -35,6 +39,7 @@ export function createStorage(options: Partial<Options>) {
     return exitFns
   }
 
+  // 执行后置钩子
   function afterValue(exitFns: ExitFn[], value: any) {
     // 这里是倒序执行
     let i = exitFns.length
