@@ -1,0 +1,15 @@
+{
+  "name": "@sujian/utils",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "keywords": [],
+  "main": "index.ts",
+  "scripts": {},
+  "dependencies": {
+    "@sujian/utils-shared": "workspace:*",
+    "currency.js": "^2.0.4",
+    "dayjs": "^1.11.5"
+  }
+}
