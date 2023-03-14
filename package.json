@@ -10,39 +10,19 @@
   "keywords": [
     "frontend utils"
   ],
-  "exports": {
-    ".": {
-      "types": "./lib/index.d.ts",
-      "require": "./lib/index.cjs",
-      "import": "./lib/index.js"
-    },
-    "./*": "./*"
-  },
-  "main": "./lib/index.cjs",
-  "module": "./lib/index.js",
-  "types": "./lib/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./lib/*",
-        "./lib/index.d.ts"
-      ]
-    }
-  },
-  "files": [
-    "lib"
-  ],
   "scripts": {
     "build": "pnpm -r run build",
     "test": "vitest",
     "test:run": "vitest run",
     "coverage": "vitest run --coverage",
-    "release": "npm publish --no-git-checks --access public"
+    "change-version": "bumpp package.json packages/*/package.json --no-commit --no-push --no-tag",
+    "release": "pnpm -r publish --no-git-checks --access public"
   },
   "dependencies": {
   },
   "devDependencies": {
     "@sujian/eslint-config-typescript": "^0.0.17",
+    "bumpp": "^8.2.1",
     "eslint": "^8.23.0",
     "happy-dom": "^6.0.4",
     "tsup": "^6.4.0",

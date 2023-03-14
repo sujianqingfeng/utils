@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-import { getMonthRangeTime, getWeekRangeTime, getCurrentWeekToNowRangeTime, getCurrentMonthToNowRangeTime, DEFAULT_FORMAT, getCurrentYearToNowRangeTime, getYearRangeTime, } from '../time'
+import { getMonthRangeTime, getWeekRangeTime, getCurrentWeekToNowRangeTime, getCurrentMonthToNowRangeTime, DEFAULT_FORMAT, getCurrentYearToNowRangeTime, getYearRangeTime, } from '../date'
 
 describe('time', () => {
   beforeEach(() => {
