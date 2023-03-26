@@ -1,3 +1,12 @@
+# [2.0.0](https://github.com/sujianqingfeng/utils/compare/1.0.17...2.0.0) (2023-03-26)
+
+
+### Features
+
+* fake time ([97d909c](https://github.com/sujianqingfeng/utils/commit/97d909c24e499804d24ca52dcfb0daa613de2c7c))
+
+
+
 # v1.0.14
 
 ## object
