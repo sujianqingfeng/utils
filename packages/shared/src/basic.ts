@@ -38,6 +38,18 @@ export function isArray(value: unknown): value is Array<unknown> {
   return Array.isArray(value) 
 }
 
+export function isPromise<T>(value:unknown): value is Promise<T> {
+  if (isObject(value)) {
+    const then = (value as any).then 
+    return then && isFunction(then) 
+  }
+  return false
+}
+
+export function isError(value: unknown): value is Error {
+  return value instanceof Error 
+}
+
 export function hasOwn(obj: object, key: string | symbol): boolean {
   return Object.prototype.hasOwnProperty.call(obj, key)
 }

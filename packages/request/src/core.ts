@@ -18,12 +18,16 @@ export function createAxios(axiosConfig: CreateAxiosDefaults) {
     getAxiosInstance() {
       return axiosInstance
     },
-    useReqInterceptor(interceptor: ReqInterceptor) {
-      axiosInstance.interceptors.request.use(...interceptor)
+    useReqInterceptor(...interceptors: ReqInterceptor[]) {
+      interceptors.forEach(interceptor => {
+        axiosInstance.interceptors.request.use(...interceptor)
+      })
       return requestInstance
     },
-    useRespInterceptor(interceptor: RespInterceptor) {
-      axiosInstance.interceptors.response.use(...interceptor)
+    useRespInterceptor(...interceptors: RespInterceptor[]) {
+      interceptors.forEach(interceptor => {
+        axiosInstance.interceptors.response.use(...interceptor)
+      })
       return requestInstance
     },
     get<R = any>(url:string, params?:any, config?:AxiosRequestConfig) {
