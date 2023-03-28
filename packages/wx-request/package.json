@@ -1,11 +1,24 @@
 {
   "name": "@sujian/wx-request",
-  "version": "1.0.0",
+  "type": "module",
+  "version": "0.0.10",
   "description": "",
   "author": "hens",
   "license": "MIT",
   "keywords": [],
-  "main": "index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/esm/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup"
   },

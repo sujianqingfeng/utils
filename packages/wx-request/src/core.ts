@@ -1,12 +1,12 @@
-import { isPromise } from '@sujian/utils-shared'
-import type { Interceptor,  RequestConfig,  RequestContext, RequestOption } from './types'
+import type { ReqInterceptor, RequestConfig,  RequestContext, RequestOption, RespInterceptor, MethodFn } from './types'
 
-function request(option:RequestOption) {
+function request(context: RequestContext) {
   return new Promise((resolve, reject) => {
     wx.request({
-      ...option,
+      ...context.requestOption,
       success: (res) => {
-        resolve(res)
+        context.response = res
+        resolve(context)
       },
       fail: (err) => {
         reject(err)
@@ -15,85 +15,65 @@ function request(option:RequestOption) {
   })
 }
 
-function traverseInterceptors(context:RequestContext, interceptors:Interceptor[]) {
-  interceptors.forEach(interceptor => {
-    interceptor(context)
-  })
-}
-
-function traverseRespInterceptors(context:RequestContext, interceptors:Interceptor[], index = 0) {
-  const  interceptor = interceptors[index]
-  const res = interceptor(context)
-
-}
-
-function createRequestContext(option:RequestOption, config:RequestConfig = {}):RequestContext {
+function createRequestContext(option: RequestOption, config: RequestConfig = {}): RequestContext {
   return {
     requestOption: option,
-    response: {},
     config
   }
 }
 
-function getBasicRequestOption(url:string, data:any, method: RequestOption['method'], config?:Optional<RequestOption>):RequestOption {
-  return {
-    ...config,
-    url,
-    data,
-    method
-  }
-}
+export function createRequest(defaultOptions?: RequestOption) {
 
-export function createRequest() {
+  const requestInterceptors: ReqInterceptor[] = [] 
+  const responseInterceptors: RespInterceptor[] = []
 
-  const requestInterceptors:Interceptor[] = [] 
-  const responseInterceptors:Interceptor[] = []
+  const process = async (context: RequestContext) => {
+    let p = Promise.resolve<any>(context)
 
-  const process = async (context:RequestContext) => {
-    traverseInterceptors(context, requestInterceptors)
-    const res = await request(context.requestOption)
-    context.response = res
-    traverseInterceptors(context, responseInterceptors)
-    return context.response
-  }
+    requestInterceptors.forEach(interceptor => {
+      const [onfulfilled, onrejected] = interceptor
+      p = p.then(onfulfilled, onrejected)
+    })
+    
+    p = p.then(request, undefined)
 
-  const get = async <R= any>(url:string, params?:object, config?:Optional<RequestOption>) => {
-    const option = getBasicRequestOption(url, params, 'GET', config)
-    const context = createRequestContext(option)
-    return process(context) as Promise<R>
+    responseInterceptors.forEach(interceptor => {
+      const [onfulfilled, onrejected] = interceptor
+      p = p.then(onfulfilled, onrejected)
+    })
+    return p
   }
 
-  const post = async <R= any>(url:string, data?:any, config?:Optional<RequestOption>) => {
-    const option = getBasicRequestOption(url, data, 'POST', config)
-    const context = createRequestContext(option)
-    return process(context) as Promise<R>
-  }
+  const createBase = (method: RequestOption['method']) => {
+    return  async <R= any>(url: string, data?: object, config?: Optional<RequestOption>) => {
+      const option: RequestOption = {
+        ...defaultOptions,
+        ...config,
+        url,
+        data,
+        method
+      } 
+      const context = createRequestContext(option)
+      return process(context) as Promise<R>
+    }
+  } 
+  const _methods =  ['get', 'post', 'delete', 'put'] as const
 
-  const _delete = async <R= any>(url:string, data?:any, config?:Optional<RequestOption>) => {
-    const option = getBasicRequestOption(url, data, 'DELETE', config)
-    const context = createRequestContext(option)
-    return process(context) as Promise<R>
-  }
-
-  const put = async <R= any>(url:string, data?:any, config?:Optional<RequestOption>) => {
-    const option = getBasicRequestOption(url, data, 'PUT', config)
-    const context = createRequestContext(option)
-    return process(context) as Promise<R>
-  }
+  const methods =  _methods.reduce<Record<string, any>>((pre, key) => {
+    pre[key]  = createBase(key as RequestOption['method'])
+    return pre
+  }, {})  as MethodFn<typeof _methods>
 
   const requestInstance = {
-    useReqInterceptor(...interceptors: Interceptor[]) {
+    useReqInterceptor(...interceptors: ReqInterceptor[]) {
       requestInterceptors.push(...interceptors)
       return requestInstance
     },
-    useRespInterceptor(...interceptors: Interceptor[]) {
+    useRespInterceptor(...interceptors: RespInterceptor[]) {
       responseInterceptors.push(...interceptors)
       return requestInstance
     },
-    get,
-    post,
-    delete: _delete,
-    put
+    ...methods
   }
 
   return requestInstance 

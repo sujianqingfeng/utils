@@ -8,18 +8,24 @@ const isShowErrorMessage = (context: RequestContext) => {
   return temp === undefined ? true : temp
 }
 
-export function createErrorMessageInterceptor(options:ErrorMessageInterceptorOptions):RespInterceptor  {
+export function createErrorMessageInterceptor(options: ErrorMessageInterceptorOptions): RespInterceptor<RequestContext>  {
   const {
     isInvalid,
     showMessage
   } = options
 
-  return  (context) => {
-    const message = isInvalid(context)
-    if (message) {
-      const isShow = isShowErrorMessage(context)
-      isShow && showMessage(message)
-      // return Promise.reject(new Error(message))
+  return  [
+    (context) => {
+      const { response } = context
+      if (response) {
+        const message = isInvalid(response)
+        if (message) {
+          const isShow = isShowErrorMessage(context)
+          isShow && showMessage(message)
+          return Promise.reject(new Error(message))
+        }
+      }
+      return Promise.resolve(context)
     }
-  }
+  ]
 }

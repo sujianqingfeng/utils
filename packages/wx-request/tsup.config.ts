@@ -6,5 +6,5 @@ export default defineConfig({
   clean: true,
   dts: true,
   format: ['cjs', 'esm'],
-  external: ['axios', 'qs-stringify']
+  legacyOutput: true,
 })

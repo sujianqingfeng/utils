@@ -20,7 +20,7 @@
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "devDependencies": {
-    "@sujian/eslint-config-typescript": "^0.0.17",
+    "@sujian/eslint-config-typescript": "^0.0.22",
     "bumpp": "^8.2.1",
     "conventional-changelog-cli": "^2.2.2",
     "eslint": "^8.23.0",

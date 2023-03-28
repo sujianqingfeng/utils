@@ -1,6 +1,6 @@
 import type {  ExtractDataInterceptorOptions, RespInterceptor } from '../../types'
 
-export function createExtractDataInterceptor(options:ExtractDataInterceptorOptions = {}):RespInterceptor {
+export function createExtractDataInterceptor(options: ExtractDataInterceptorOptions = {}): RespInterceptor {
   const { extract } = options 
 
   return [

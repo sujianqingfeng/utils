@@ -1,7 +1,7 @@
 {
   "name": "@sujian/utils-shared",
   "type": "module",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "",
   "author": "hens",
   "license": "MIT",
@@ -9,12 +9,12 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
+      "require": "./dist/index.js",
+      "import": "./dist/esm/index.js"
     }
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/esm/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"

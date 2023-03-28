@@ -1,6 +1,7 @@
 {
   "extends": "@sujian/typescript",
+  "ignorePatterns": ["lib"],
   "rules": {
-  },
-  "ignorePatterns": ["lib"]
+    
+  }
 }

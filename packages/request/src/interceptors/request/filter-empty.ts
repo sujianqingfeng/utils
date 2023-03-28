@@ -3,7 +3,7 @@ import type {  ReqInterceptor } from '../../types'
 
 export const FILTER_EMPTY_PARAMS_KEY = '_filterEmptyParams'
 
-export function createFilterEmptyInterceptor():ReqInterceptor  {
+export function createFilterEmptyInterceptor(): ReqInterceptor {
   return [
     (config) => {
 

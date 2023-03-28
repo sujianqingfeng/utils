@@ -4,12 +4,12 @@ import type { ErrorMessageInterceptorOptions,  RespInterceptor } from '../../typ
 
 export const SHOW_ERROR_MESSAGE_KEY = '_showErrorMessage'
 
-const isShowErrorMessage = (config:AxiosRequestConfig) => {
+const isShowErrorMessage = (config: AxiosRequestConfig) => {
   const temp = config[SHOW_ERROR_MESSAGE_KEY]
   return temp === undefined ? true : temp
 }
 
-export function createErrorMessageInterceptor(options:ErrorMessageInterceptorOptions):RespInterceptor {
+export function createErrorMessageInterceptor(options: ErrorMessageInterceptorOptions): RespInterceptor {
 
   const {
     isInvalid,
@@ -27,7 +27,7 @@ export function createErrorMessageInterceptor(options:ErrorMessageInterceptorOpt
 
       return Promise.resolve(res)
     },
-    (error:AxiosError) => {
+    (error: AxiosError) => {
       const isCancel = axios.isCancel(error)
       const isShow = isShowErrorMessage(error.config!)
 
