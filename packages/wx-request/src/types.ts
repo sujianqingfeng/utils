@@ -1,6 +1,7 @@
 export type IAnyObject = Record<string, any>
 export type MaybeResult = IAnyObject | ArrayBuffer | string
 export type RequestOption = WechatMiniprogram.RequestOption & {[key: string]: any}  
+export type WxRequest  = WechatMiniprogram.Wx['request']
 
 export type RequestSuccessCallbackResult<T extends MaybeResult = MaybeResult> = WechatMiniprogram.RequestSuccessCallbackResult<T>
 

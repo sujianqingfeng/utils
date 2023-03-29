@@ -51,13 +51,21 @@ importers:
     dependencies:
       '@sujian/utils-shared': link:../shared
 
+  packages/uni-request:
+    specifiers:
+      '@dcloudio/types': ^3.2.11
+      '@sujian/wx-request': workspace:*
+    dependencies:
+      '@sujian/wx-request': link:../wx-request
+    devDependencies:
+      '@dcloudio/types': 3.2.11
+
   packages/wx-request:
     specifiers:
       '@sujian/utils-shared': workspace:*
       '@types/wechat-miniprogram': ^3.4.1
     dependencies:
       '@sujian/utils-shared': link:../shared
-    devDependencies:
       '@types/wechat-miniprogram': 3.4.1
 
 packages:
@@ -277,6 +285,10 @@ packages:
       '@babel/helper-string-parser': 7.19.4
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
+    dev: true
+
+  /@dcloudio/types/3.2.11:
+    resolution: {integrity: sha512-Ws+pUiQMvCcSjg0soF+vTTwwsdNlK/1cxIfo5LBBDFPoXfUAAh6k9HnCt5cudERNhY0M3wE7ATMx/1Cb9bmUig==}
     dev: true
 
   /@esbuild/android-arm/0.15.13:
@@ -517,7 +529,7 @@ packages:
 
   /@types/wechat-miniprogram/3.4.1:
     resolution: {integrity: sha512-szbuYR32VotxNQNQ4YyQ6Ob3ya0tLY0zpf/xvi6DF8Oqb+0Y+5CL5BpxS+4wBSJvlu3VfSXhjxZ0ze1a3l16Pw==}
-    dev: true
+    dev: false
 
   /@typescript-eslint/eslint-plugin/5.38.0_wsb62dxj2oqwgas4kadjymcmry:
     resolution: {integrity: sha512-GgHi/GNuUbTOeoJiEANi0oI6fF3gBQc3bGFYj40nnAPCbhrtEDf2rjBmefFadweBmO1Du1YovHeDP2h5JLhtTQ==}

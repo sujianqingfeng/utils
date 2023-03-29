@@ -1,10 +1,9 @@
 {
-  "name": "@sujian/wx-request",
-  "type": "module",
-  "version": "0.0.10",
+  "name": "@sujian/uni-request",
+  "version": "1.0.0",
   "description": "",
-  "author": "hens",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "keywords": [],
   "exports": {
     ".": {
@@ -23,10 +22,9 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@sujian/utils-shared": "workspace:*",
-    "@types/wechat-miniprogram": "^3.4.1"
+    "@sujian/wx-request": "workspace:*"
   },
   "devDependencies": {
-    "@types/wechat-miniprogram": "^3.4.1"
+    "@dcloudio/types": "^3.2.11"
   }
 }
