@@ -24,7 +24,7 @@ export function createPlatformRequest<T extends WxRequest>(platformRequest: T) {
     })
   }
 
-  return (defaultOptions?: RequestOption) => {
+  return function createRequest<T extends RequestOption = RequestOption>(defaultOptions?: T)  {
 
     const requestInterceptors: ReqInterceptor[] = [] 
     const responseInterceptors: RespInterceptor[] = []
@@ -82,5 +82,5 @@ export function createPlatformRequest<T extends WxRequest>(platformRequest: T) {
   }
 }
 
-export const createRequest = createPlatformRequest(wx.request)
+export const createWxRequest = createPlatformRequest<WxRequest>(wx.request)
 
