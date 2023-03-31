@@ -1,8 +1,7 @@
 import { createPlatformRequest } from '@sujian/wx-request'
-import type { UniRequest } from './types'
+import type { WxRequest } from '@sujian/wx-request'
 
 export * from '@sujian/wx-request'
-export  * from './types'
 
-export const createUniRequest = createPlatformRequest<UniRequest>(uni.request)
+export const createUniRequest = createPlatformRequest(uni.request as WxRequest)
 
