@@ -9,7 +9,7 @@ type Obj = Record<string, any>
  * @param keys 
  * @returns 
  */
-export function objectTrim(obj: Record<string, any>, keys?:string[]) {
+export function objectTrim(obj: Record<string, any>, keys?: string[]) {
 
   const data = { ...obj }
 
@@ -32,7 +32,7 @@ export function objectTrim(obj: Record<string, any>, keys?:string[]) {
  * @param valid 
  * @returns 
  */
-export function objectDefaultValue(obj:Obj, part:Partial<Obj>, valid: (val:any)=>boolean = isNull) {
+export function objectDefaultValue(obj: Obj, part: Partial<Obj>, valid: (val: any) => boolean = isNull) {
   const data = { ... obj }
 
   Object.keys(part).forEach(key => {

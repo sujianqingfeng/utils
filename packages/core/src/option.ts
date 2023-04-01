@@ -2,9 +2,9 @@ import { isArray, isObject } from '@sujian/utils-shared'
 
 type Value =  string | number | boolean | null
 
-export interface Option {
+export interface Option<T = Value> {
   label: string,
-  value?: Value
+  value: T 
 }
 
 /**
@@ -14,7 +14,7 @@ export interface Option {
  * @param value 
  * @returns 
  */
-export function createOption(label: string, value?: Value): Option {
+export function createOption(label: string, value: Value): Option {
   return { label, value } 
 }
 
