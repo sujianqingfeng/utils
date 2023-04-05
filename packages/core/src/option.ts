@@ -14,7 +14,7 @@ export interface Option<T = Value> {
  * @param value 
  * @returns 
  */
-export function createOption(label: string, value: Value): Option {
+export function createOption<T = Value>(label: string, value: T): Option<T> {
   return { label, value } 
 }
 
@@ -25,8 +25,8 @@ export function createOption(label: string, value: Value): Option {
  * @param valueKey 
  * @returns 
  */
-export function mapOption(labelKey: string, valueKey?: string) {
-  return (item: Record<string, any>) => createOption(item[labelKey], valueKey ? item[valueKey] : null)
+export function mapOption<T>(labelKey: string, valueKey?: string) {
+  return (item: Record<string, any>) => createOption<T>(item[labelKey], valueKey ? item[valueKey] : null)
 }
 
 /**
