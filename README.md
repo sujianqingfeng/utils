@@ -5,8 +5,10 @@
 
 ```
 pnpm i @sujian/utils
-pnpm i @sujian/utils-request
-pnpm i @sujian/utils-storage
+pnpm i @sujian/request
+pnpm i @sujian/storage
+pnpm i @sujian/uni-request
+pnpm i @sujian/wx-request
 ```
 
 ## CHANGELOG
