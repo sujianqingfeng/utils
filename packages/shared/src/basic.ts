@@ -38,7 +38,7 @@ export function isArray(value: unknown): value is Array<unknown> {
   return Array.isArray(value) 
 }
 
-export function isPromise<T>(value:unknown): value is Promise<T> {
+export function isPromise<T>(value: unknown): value is Promise<T> {
   if (isObject(value)) {
     const then = (value as any).then 
     return then && isFunction(then) 
@@ -52,4 +52,26 @@ export function isError(value: unknown): value is Error {
 
 export function hasOwn(obj: object, key: string | symbol): boolean {
   return Object.prototype.hasOwnProperty.call(obj, key)
+}
+
+/**
+ * 包装promise
+ * 
+ * @param promiseFn 
+ * @returns 
+ */
+export function createTryWrapper<R = any, T extends any[] = any[]>(
+  promiseFn: (...rest: T) => Promise<R>
+) {
+  if (!isFunction(promiseFn)) {
+    throw new Error('createTryWrapper: promiseFn must be a function')
+  }
+  return async (...rest: Parameters<typeof promiseFn>): Promise<[true, R] | [false, any]> => {
+    try {
+      const data = await promiseFn(...rest)
+      return [true, data]
+    } catch (error) {
+      return [false, error]
+    }
+  }
 }

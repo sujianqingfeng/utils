@@ -1,6 +1,6 @@
 import type { RedirectInterceptorOptions, RespInterceptor } from '../../types'
 
-export function createRedirectInterceptor(options:RedirectInterceptorOptions):RespInterceptor {
+export function createRedirectInterceptor(options: RedirectInterceptorOptions): RespInterceptor {
   const { isRedirect } = options
 
   return [

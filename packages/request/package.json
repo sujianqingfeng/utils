@@ -11,16 +11,28 @@
       "types": "./dist/index.d.ts",
       "require": "./dist/index.cjs",
       "import": "./dist/index.js"
+    },
+    "./utils": {
+      "types": "./utils.d.ts",
+      "require": "./dist/utils.cjs",
+      "import": "./dist/utils.js"
+    },
+    "./types": {
+      "types": "./request.d.ts"
     }
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "*.d.ts"
   ],
   "scripts": {
     "build": "tsup"
+  },
+  "peerDependencies": {
+    "axios": ">=1.1.3"
   },
   "dependencies": {
     "@sujian/utils-shared": "workspace:*",

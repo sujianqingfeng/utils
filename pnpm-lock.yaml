@@ -32,6 +32,12 @@ importers:
       currency.js: 2.0.4
       dayjs: 1.11.5
 
+  packages/playground:
+    specifiers:
+      '@sujian/request': workspace:*
+    dependencies:
+      '@sujian/request': link:../request
+
   packages/request:
     specifiers:
       '@sujian/utils-shared': workspace:*

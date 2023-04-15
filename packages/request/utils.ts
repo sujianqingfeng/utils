@@ -1,0 +1,1 @@
+export { createTryWrapper } from '@sujian/utils-shared'

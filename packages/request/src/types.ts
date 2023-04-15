@@ -6,11 +6,11 @@ export type ReqInterceptor=AxiosInterceptor<AxiosRequestConfig>
 export type RespInterceptor=AxiosInterceptor<AxiosResponse> 
 
 export type RedirectInterceptorOptions = {
-  isRedirect: (res: AxiosResponse) => string|undefined
+  isRedirect: (res: AxiosResponse) => string | undefined
 }
 
 export type ErrorMessageInterceptorOptions = {
-  isInvalid: (res: AxiosResponse) => string | undefined 
+  isInvalid: (res: AxiosResponse) => string | void 
   showMessage: (msg: string | AxiosError) => void
 }
 

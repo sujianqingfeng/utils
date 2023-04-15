@@ -1,7 +1,7 @@
 import type {  ReqInterceptor } from '../../types'
 import stringify from 'qs-stringify'
 
-export function createSerializeInterceptor():ReqInterceptor  {
+export function createSerializeInterceptor(): ReqInterceptor  {
   return [
     (config) => {
       const { headers = {} } = config

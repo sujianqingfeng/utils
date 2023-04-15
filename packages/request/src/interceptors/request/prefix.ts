@@ -2,7 +2,7 @@ import type {  ReqInterceptor } from '../../types'
 
 export const PREFIX_KEY = '_prefixKey'
 
-export function createPrefixInterceptor(defaultPrefix = ''):ReqInterceptor  {
+export function createPrefixInterceptor(defaultPrefix = ''): ReqInterceptor  {
   return [
     (config) => {
       const prefix = config[PREFIX_KEY ]
