@@ -1,7 +1,7 @@
 {
   "name": "@sujian/request",
   "type": "module",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "",
   "author": "",
   "license": "MIT",
@@ -13,12 +13,12 @@
       "import": "./dist/index.js"
     },
     "./utils": {
-      "types": "./utils.d.ts",
+      "types": "./dist/utils.d.ts",
       "require": "./dist/utils.cjs",
       "import": "./dist/utils.js"
     },
     "./types": {
-      "types": "./request.d.ts"
+      "types": "./dist/request.d.ts"
     }
   },
   "main": "./dist/index.cjs",
